@@ -1,0 +1,72 @@
+#container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#title {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  align-items: center;
+}
+
+#nameDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+#emailDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+#phoneDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+#saveDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+#wrapper {
+  background-color: rgb(255, 255, 255);
+  width: 60%;
+  padding-bottom: 50px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+#emailButton {
+  margin-top: 5px;
+  width: 100px;
+  cursor: pointer;
+}
+
+#phoneButton {
+  margin-top: 5px;
+  width: 100px;
+  cursor: pointer;
+}
+
+#saveBtn {
+  cursor: pointer;
+  font-size: 25px;
+  border-radius: 5px;
+}
