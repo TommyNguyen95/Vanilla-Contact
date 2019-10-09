@@ -5,7 +5,7 @@ try {
 catch(e){
     store = {};
 }
- 
+
 store.create = function(id, contact){
  	localStorage.store = JSON.stringify({
         contacts: {

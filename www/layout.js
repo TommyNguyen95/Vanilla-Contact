@@ -54,27 +54,28 @@ wrapper.append(emailDiv);
 emailDiv.innerHTML;
 emailDiv.setAttribute('id', 'emailDiv');
 
-//Email
+//Email label
 let email = document.createElement('label');
 email.setAttribute('for', 'email')
 emailDiv.append(email);
 email.innerHTML = 'Email';
 
-let emailInput = document.createElement('input');
-emailDiv.append(emailInput);
-emailInput.innerHTML;
-emailInput.setAttribute('type', 'text');
-emailInput.setAttribute('id', 'email');
-
-let addEmailButton = document.createElement('button');
-emailDiv.append(addEmailButton);
-addEmailButton.innerHTML = 'Add';
-addEmailButton.setAttribute('id', 'emailButton');
-
 let emailUl = document.createElement('ul');
 emailDiv.append(emailUl);
 emailUl.innerHTML;
 emailUl.setAttribute('id', 'emailUl');
+
+//Email input
+let emailInput = document.createElement('input');
+emailUl.append(emailInput);
+emailInput.innerHTML;
+emailInput.setAttribute('type', 'text');
+emailInput.setAttribute('class', 'email');
+
+let addEmailButton = document.createElement('button');
+emailDiv.append(addEmailButton);
+addEmailButton.innerHTML = 'ADD';
+addEmailButton.setAttribute('id', 'emailButton');
 
 //Phone div
 let phoneDiv = document.createElement('div');
@@ -88,21 +89,22 @@ phone.setAttribute('for', 'phone')
 phoneDiv.append(phone);
 phone.innerHTML = 'Phonenumber';
 
-let phoneInput = document.createElement('input');
-phoneDiv.append(phoneInput);
-phoneInput.innerHTML;
-phoneInput.setAttribute('type', 'tel');
-phoneInput.setAttribute('id', 'phone');
-
-let addPhoneButton = document.createElement('button');
-phoneDiv.append(addPhoneButton);
-addPhoneButton.innerHTML = 'Add';
-addPhoneButton.setAttribute('id', 'phoneButton');
-
 let phoneUl = document.createElement('ul');
 phoneDiv.append(phoneUl);
 phoneUl.innerHTML;
 phoneUl.setAttribute('id', 'phoneUl');
+
+let phoneInput = document.createElement('input');
+phoneUl.append(phoneInput);
+phoneInput.innerHTML;
+phoneInput.setAttribute('type', 'tel');
+phoneInput.setAttribute('class', 'phone');
+
+let addPhoneButton = document.createElement('button');
+phoneDiv.append(addPhoneButton);
+addPhoneButton.innerHTML = 'ADD';
+addPhoneButton.setAttribute('id', 'phoneButton');
+
 
 //Save button div
 let saveDiv = document.createElement('div');
