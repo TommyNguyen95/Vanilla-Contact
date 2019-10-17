@@ -21,11 +21,19 @@ class App {
       if (e.target.id === 'phoneButton') {
         this.addPhoneInput();
       }
-      if(e.target.className === 'deleteButton'){
-        console.log(e);
+      if (e.target.className === 'deleteButton'){
         const target = e.target.closest('[data-contact-id]');
         const id = target.getAttribute('data-contact-id')
         this.deleteContact({ target, id });
+      }
+      if (e.target.className === 'showContact'){
+        const target = e.target.closest('[data-contact-id]');
+        const id = target.getAttribute('data-contact-id')
+        this.showContact({ target, id });
+        console.log(id);
+      }
+      if (e.target.className === 'backBtn'){
+        this.back();
       }
     })
   }
@@ -39,10 +47,12 @@ class App {
       return node.value;
     })
     let contact = new Contact(nameValue, phoneValue, emailValue);
-    contact.id = store.contacts.length;
     store.contacts.push(contact);
     store.save();
-    console.log(this.contactList.renderContacts());
+    document.querySelector('div.wrapper').outerHTML = '';
+    this.pageContent = new Pagecontent();
+    document.querySelector('div.wrapperContact').outerHTML = '';
+    this.contactList = new ContactList();
   }
 
   addEmailInput() {
@@ -68,15 +78,19 @@ class App {
     console.log('Delete contact with id: ', id);
     store.save();
     target.parentElement.removeChild(target);
-
   }
-  // Delete existing contact
-//  deleteContact(id) {
-//    contacts.splice(contacts.findIndex(contact => contact.id === Number(id)), 1)
-//    contacts.save()
-//    document.querySelector('div.table-div').outerHT ML = ''
-//    this.contacts = new Contacts()
-//  }
+
+  showContact(){
+    document.querySelector('div.wrapper').outerHTML = '';
+    document.querySelector('div.wrapperContact').outerHTML = '';
+    this.editContact = new EditContact();
+  }
+
+  back() {
+    document.querySelector('div.editWrap').outerHTML = '';
+    this.pageContent = new Pagecontent();
+    this.contactList = new ContactList();
+  }
 }
 
 

@@ -10,7 +10,7 @@ class Pagecontent {
             const wrapper = document.createElement('div');
             body.append(wrapper);
             wrapper.innerHTML;
-            wrapper.setAttribute('id', 'wrapper');
+            wrapper.setAttribute('class', 'wrapper');
             return wrapper;
         };
 
