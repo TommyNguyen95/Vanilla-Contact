@@ -94,3 +94,18 @@ ul {
   margin-block-start: 0;
   margin-block-end: 0;
 }
+
+p {
+  text-align: center;
+}
+
+.deleteButton {
+  align-self: center;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.contactDiv {
+  justify-content: center;
+  display: flex;
+}
