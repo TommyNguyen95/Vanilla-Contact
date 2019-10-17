@@ -30,10 +30,20 @@ class App {
         const target = e.target.closest('[data-contact-id]');
         const id = target.getAttribute('data-contact-id')
         this.showContact({ target, id });
-        console.log(id);
       }
       if (e.target.className === 'backBtn'){
         this.back();
+      }
+      if (e.target.className === 'saveEditBtn'){
+        const target = e.target.closest('[data-contact-id]');
+        const id = target.getAttribute('data-contact-id')
+        this.saveEditedContact({ id });
+      }
+      if (e.target.className === 'emailButton'){
+        this.editAddEmailInput();
+      }
+      if (e.target.className === 'phoneButton'){
+        this.editAddPhoneInput();
       }
     })
   }
@@ -64,6 +74,16 @@ class App {
     emailInput.setAttribute('class', 'email');
   }
 
+  editAddEmailInput() {
+    let emailUl = document.querySelector('[class=emailUl]');
+    let emailInput = document.createElement('input');
+    emailUl.append(emailInput);
+    emailInput.innerHTML;
+    emailInput.placeholder = 'Emailadress';
+    emailInput.type = 'text'
+    emailInput.className = 'editEmailInput'
+  }
+
   addPhoneInput() {
     let phoneInput = document.createElement('input');
     phoneUl.append(phoneInput);
@@ -73,6 +93,16 @@ class App {
     phoneInput.setAttribute('class', 'phone');
   }
 
+  editAddPhoneInput() {
+    let phoneUl = document.querySelector('[class=phoneUl]');
+    let phoneInput = document.createElement('input');
+    phoneUl.append(phoneInput);
+    phoneInput.innerHTML;
+    phoneInput.placeholder = 'Phonenumber';
+    phoneInput.type = 'tel';
+    phoneInput.className = 'editPhoneInput';
+  }
+
   deleteContact({ target, id }) {
     store.contacts.splice(store.contacts.findIndex(contact => contact.id === Number(id)), 1)
     console.log('Delete contact with id: ', id);
@@ -80,16 +110,36 @@ class App {
     target.parentElement.removeChild(target);
   }
 
-  showContact(){
+  showContact({ id }){
+    const contactIndex = store.contacts.findIndex(contact => contact.id === Number(id));
+    const contact = store.contacts[contactIndex];
+    console.log('Edit contact with id: ', id);
     document.querySelector('div.wrapper').outerHTML = '';
     document.querySelector('div.wrapperContact').outerHTML = '';
-    this.editContact = new EditContact();
+    this.editContact = new EditContact(contact, id);
   }
 
   back() {
     document.querySelector('div.editWrap').outerHTML = '';
     this.pageContent = new Pagecontent();
     this.contactList = new ContactList();
+  }
+
+  saveEditedContact({ id }) {
+    let nameValue = document.querySelector('[class=name]').value;
+    let phoneValue = [...document.querySelectorAll('[class=editPhoneInput]')].map((node) => {
+      return node.value;
+    });
+    let emailValue = [...document.querySelectorAll('[class=editEmailInput]')].map((node) => {
+      return node.value;
+    })
+    let editContact = new Contact(nameValue, phoneValue, emailValue);
+    const contactIndex = store.contacts.findIndex(contact => contact.id === Number(id));
+    const contact = store.contacts[contactIndex];
+    const addToHistory = { ...contact, history: undefined, date: new Date() };
+    editContact.history.push(addToHistory);
+    store.contacts.splice(contactIndex, 1, editContact);
+    store.save()
   }
 }
 

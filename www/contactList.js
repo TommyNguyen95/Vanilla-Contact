@@ -29,6 +29,7 @@ class ContactList {
       let namesDiv = document.createElement('div');
       contactDiv.append(namesDiv);
       namesDiv.setAttribute('class', 'nameDiv');
+      namesDiv.innerHTML = "<span>Name</span>";
 
       let contactName = document.createElement('p');
       contactName.innerHTML = element.name;
@@ -38,11 +39,13 @@ class ContactList {
       contactEmailDiv.innerHTML;
       contactDiv.appendChild(contactEmailDiv);
       contactEmailDiv.setAttribute('class', 'emailDiv');
+      contactEmailDiv.innerHTML = "<span>Email</span>";
 
       let contactPhoneDiv = document.createElement('div');
       contactPhoneDiv.innerHTML;
       contactDiv.appendChild(contactPhoneDiv);
       contactPhoneDiv.setAttribute('class', 'phoneDiv');
+      contactPhoneDiv.innerHTML = "<span>Phone number</span>";
     
       element.emailaddresses.map(email => {
         let emailP = document.createElement('p')

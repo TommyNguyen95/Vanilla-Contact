@@ -78,6 +78,18 @@ body {
   margin-bottom: 30px;
 }
 
+.phoneButton {
+  width: 100px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.emailButton {
+  width: 100px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
 #save {
   cursor: pointer;
   font-size: 25px;
@@ -126,4 +138,74 @@ h1 {
   justify-content: center;
   display: flex;
   margin-bottom: 20px;
+}
+
+.phoneDiv {
+  text-align: center;
+}
+
+.emailDiv {
+  text-align: center;
+}
+
+.nameDiv {
+  text-align: center;
+}
+
+span {
+  text-decoration: underline;
+  font-size: 25px;
+}
+
+.editWrap {
+  margin-bottom: 10px;
+  background-color: rgb(255, 255, 255);
+  width: 40%;
+  padding-bottom: 50px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.editContactDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.editNameDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.editEmailDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.saveEditDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.wrapperHistory {
+  background-color: rgb(255, 255, 255);
+  width: 40%;
+  border: 2px solid black;
+  border-radius: 5px;
+  max-height: 500px;
+  overflow-x: hidden;
+  text-align: center;
 }
