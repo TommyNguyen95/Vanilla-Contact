@@ -1,17 +1,15 @@
 class EditContact {
   constructor(contact, id) {
     this.editContact(contact, id);
-    this.history();
-
   }
 
-  editContact(contact) {
+  editContact(contact, id) {
     let body = document.querySelector('body');
 
     let editWrapper = document.createElement('div');
     body.appendChild(editWrapper);
     editWrapper.className = 'editWrap';
-    editWrapper.setAttribute('data-contact-id', contact.id)
+    editWrapper.setAttribute('data-contact-id', id)
 
     let editContactDiv = document.createElement('div');
     editWrapper.appendChild(editContactDiv);
@@ -92,26 +90,16 @@ class EditContact {
     saveEditDiv.appendChild(saveEditBtn);
     saveEditBtn.className = 'saveEditBtn';
     saveEditBtn.innerHTML = 'SAVE EDITED CONTACT'
-  }
-  history(){
-    let containerHistory = document.querySelector('body');
+
     let wrapperHistory = document.createElement('div');
-    containerHistory.append(wrapperHistory);
-    wrapperHistory.innerHTML = "<span>CONTACT HISTORY</span>";
+    body.append(wrapperHistory);
+    wrapperHistory.innerHTML;
     wrapperHistory.setAttribute('class', 'wrapperHistory');
+    wrapperHistory.setAttribute('data-contact-id', id);
 
-    store.contacts.history.forEach((element) => {
-      let historyDiv = document.createElement('div');
-      wrapperHistory.append(historyDiv);
-      wrapperHistory.className = 'historyDiv';
-
-      let historyName = document.createElement('div');
-      historyDiv.append(historyName);
-      historyName.className = 'historyDiv';
-
-      let hisName = document.createElement('p');
-      hisName.innerHTML = element.name;
-      historyName.append(hisName);
-    });
+    let historyTitle = document.createElement('h1');
+    wrapperHistory.append(historyTitle);
+    historyTitle.innerHTML = 'Contact history';
+    historyTitle.setAttribute('id', 'title');
   }
 }

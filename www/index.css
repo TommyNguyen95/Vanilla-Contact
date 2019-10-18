@@ -200,6 +200,10 @@ span {
   align-items: center;
 }
 
+.saveEditBtn {
+  cursor: pointer;
+}
+
 .wrapperHistory {
   background-color: rgb(255, 255, 255);
   width: 40%;

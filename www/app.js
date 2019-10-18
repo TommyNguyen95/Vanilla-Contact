@@ -117,10 +117,12 @@ class App {
     document.querySelector('div.wrapper').outerHTML = '';
     document.querySelector('div.wrapperContact').outerHTML = '';
     this.editContact = new EditContact(contact, id);
+    this.history = new History(contact, id);
   }
 
   back() {
     document.querySelector('div.editWrap').outerHTML = '';
+    document.querySelector('div.wrapperHistory').outerHTML = '';
     this.pageContent = new Pagecontent();
     this.contactList = new ContactList();
   }
@@ -136,10 +138,14 @@ class App {
     let editContact = new Contact(nameValue, phoneValue, emailValue);
     const contactIndex = store.contacts.findIndex(contact => contact.id === Number(id));
     const contact = store.contacts[contactIndex];
-    const addToHistory = { ...contact, history: undefined, date: new Date() };
+    const addToHistory = { ...contact, history: undefined };
     editContact.history.push(addToHistory);
     store.contacts.splice(contactIndex, 1, editContact);
     store.save()
+    document.querySelector('div.editWrap').outerHTML = '';
+    this.editContact = new EditContact();
+    document.querySelector('div.wrapperHistory').outerHTML = '';
+    this.history = new History();
   }
 }
 
