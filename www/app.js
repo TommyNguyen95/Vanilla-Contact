@@ -148,6 +148,3 @@ class App {
     this.history = new History();
   }
 }
-
-
-new App().createDOM()

@@ -43,6 +43,15 @@ class History {
                 historyPhoneP.innerHTML = phone;
                 historyPhoneDiv.append(historyPhoneP);
             })
+
+            let redoHistory = document.createElement('div');
+            historyDiv.append(redoHistory);
+            redoHistory.className = 'redoHistoryDiv';
+
+            let redoBtn = document.createElement('button');
+            redoHistory.append(redoBtn);
+            redoBtn.innerHTML = 'Replace';
+            
         });
     }
 }

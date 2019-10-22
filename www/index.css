@@ -213,3 +213,7 @@ span {
   overflow-x: hidden;
   text-align: center;
 }
+
+.redoHistoryDiv {
+  margin-bottom: 20px;
+}
