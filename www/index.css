@@ -215,5 +215,9 @@ span {
 }
 
 .redoHistoryDiv {
-  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.redoBtn {
+  margin-bottom: 10px;
 }
