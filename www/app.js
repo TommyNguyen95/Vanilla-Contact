@@ -45,6 +45,11 @@ class App {
       if (e.target.className === 'phoneButton'){
         this.editAddPhoneInput();
       }
+      if (e.target.className === 'redoBtn'){
+        const target = e.target.closest('[data-contact-id]');
+        const id = target.getAttribute('data-contact-id')
+        this.restoreContact({ id });
+      }
     })
   }
 
@@ -104,16 +109,14 @@ class App {
   }
 
   deleteContact({ target, id }) {
-    store.contacts.splice(store.contacts.findIndex(contact => contact.id === Number(id)), 1)
-    console.log('Delete contact with id: ', id);
+    store.contacts.splice(store.contacts.findIndex(contact => contact.id === id), 1)
     store.save();
     target.parentElement.removeChild(target);
   }
 
   showContact({ id }){
-    const contactIndex = store.contacts.findIndex(contact => contact.id === Number(id));
+    const contactIndex = store.contacts.findIndex(contact => contact.id === id);
     const contact = store.contacts[contactIndex];
-    console.log('Edit contact with id: ', id);
     document.querySelector('div.wrapper').outerHTML = '';
     document.querySelector('div.wrapperContact').outerHTML = '';
     this.editContact = new EditContact(contact, id);
@@ -135,16 +138,22 @@ class App {
     let emailValue = [...document.querySelectorAll('[class=editEmailInput]')].map((node) => {
       return node.value;
     })
-    let editContact = new Contact(nameValue, phoneValue, emailValue);
-    const contactIndex = store.contacts.findIndex(contact => contact.id === Number(id));
-    const contact = store.contacts[contactIndex];
-    const addToHistory = { ...contact, history: undefined };
+    const existingContactIndex = store.contacts.findIndex(contact => contact.id === id);
+    const existingContact = store.contacts[existingContactIndex];
+    let editContact = new Contact(nameValue, phoneValue, emailValue, existingContact.history, id);
+    const addToHistory = { ...existingContact, history: undefined };
     editContact.history.push(addToHistory);
-    store.contacts.splice(contactIndex, 1, editContact);
+    store.contacts.splice(existingContact, 1, editContact);
     store.save()
     document.querySelector('div.editWrap').outerHTML = '';
-    this.editContact = new EditContact();
     document.querySelector('div.wrapperHistory').outerHTML = '';
-    this.history = new History();
+    
+    this.editContact = new EditContact(editContact, id);
+    this.history = new History(editContact, id);
+  }
+
+  restoreContact({ id }) {  
+    const HistoryIndex = existingContact.history.findIndex(contact.id ===id);
+    console.log(HistoryIndex)
   }
 }

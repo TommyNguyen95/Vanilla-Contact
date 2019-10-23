@@ -1,6 +1,10 @@
 class Contact {
-  constructor(name, phonenumbers = [], emailaddresses = [], history = []) {
-    this.id = Date.now();
+  constructor(name, phonenumbers = [], emailaddresses = [], history = [], id) {
+    this.id = Date.now() + '';
+    
+    if(id !== undefined) {
+      this.id = id;
+    } 
     this.name = name;
     this.emailaddresses = emailaddresses;
     this.phonenumbers = phonenumbers;

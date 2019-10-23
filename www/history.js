@@ -51,7 +51,7 @@ class History {
             let redoBtn = document.createElement('button');
             redoHistory.append(redoBtn);
             redoBtn.setAttribute('class', 'redoBtn');
-            redoBtn.innerHTML = 'Replace';
+            redoBtn.innerHTML = 'Restore';
             
         });
     }
