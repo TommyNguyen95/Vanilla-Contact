@@ -3,7 +3,7 @@ class History {
         this.history(contact, id);
     }
     history(contact, id) {
-        contact.history.forEach((element) => {
+        contact.history.forEach((element, index) => {
             let wrapperHistory = document.querySelector('.wrapperHistory');
 
             let historyDiv = document.createElement('div');
@@ -52,6 +52,8 @@ class History {
             redoHistory.append(redoBtn);
             redoBtn.setAttribute('class', 'redoBtn');
             redoBtn.innerHTML = 'Restore';
+            redoBtn.setAttribute('data-history-index', index)
+
             
         });
     }

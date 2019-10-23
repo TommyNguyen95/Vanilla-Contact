@@ -48,7 +48,9 @@ class App {
       if (e.target.className === 'redoBtn'){
         const target = e.target.closest('[data-contact-id]');
         const id = target.getAttribute('data-contact-id')
-        this.restoreContact({ id });
+        const indexTarget = e.target.closest('[data-history-index]');
+        const index = indexTarget.getAttribute('data-history-index');
+        this.restoreContact({ id, index });
       }
     })
   }
@@ -143,17 +145,36 @@ class App {
     let editContact = new Contact(nameValue, phoneValue, emailValue, existingContact.history, id);
     const addToHistory = { ...existingContact, history: undefined };
     editContact.history.push(addToHistory);
-    store.contacts.splice(existingContact, 1, editContact);
+    console.log(existingContact);
+    store.contacts.splice(existingContactIndex, 1, editContact);
     store.save()
     document.querySelector('div.editWrap').outerHTML = '';
     document.querySelector('div.wrapperHistory').outerHTML = '';
-    
     this.editContact = new EditContact(editContact, id);
     this.history = new History(editContact, id);
   }
 
-  restoreContact({ id }) {  
-    const HistoryIndex = existingContact.history.findIndex(contact.id ===id);
-    console.log(HistoryIndex)
+  restoreContact({ id, index }) {  
+    const existingContactIndex = store.contacts.findIndex(contact => contact.id === id);
+    const existingContact = store.contacts[existingContactIndex];
+    const existingContactHistory = existingContact.history[index];
+    
+    const restoredHistory = [...existingContact.history].map((object) => {
+      return { ...object }
+    });
+
+    restoredHistory.length = index;
+    let restoredContact = new Contact(existingContactHistory.name, existingContactHistory.phonenumbers, existingContactHistory.emailaddresses, restoredHistory, id);
+
+    store.contacts.splice(existingContactIndex, 1, restoredContact);
+    store.save();
+
+    document.querySelector('div.editWrap').outerHTML = '';
+    document.querySelector('div.wrapperHistory').outerHTML = '';
+  
+    this.editContact = new EditContact(restoredContact, id);
+    this.history = new History(restoredContact, id);
+
+
   }
 }
