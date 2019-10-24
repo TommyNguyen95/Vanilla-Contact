@@ -63,13 +63,18 @@ class App {
     let emailValue = [...document.querySelectorAll('[class=email]')].map((node) => {
       return node.value;
     })
-    let contact = new Contact(nameValue, phoneValue, emailValue);
-    store.contacts.push(contact);
-    store.save();
-    document.querySelector('div.wrapper').outerHTML = '';
-    this.pageContent = new Pagecontent();
-    document.querySelector('div.wrapperContact').outerHTML = '';
-    this.contactList = new ContactList();
+    if (nameValue === ""){
+      alert('You have to fill in a name');
+    }else{
+      let contact = new Contact(nameValue, phoneValue, emailValue);
+      store.contacts.push(contact);
+      store.save();
+      document.querySelector('div.wrapper').outerHTML = '';
+      this.pageContent = new Pagecontent();
+      document.querySelector('div.wrapperContact').outerHTML = '';
+      this.contactList = new ContactList();
+    }
+
   }
 
   addEmailInput() {

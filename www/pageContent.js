@@ -41,7 +41,6 @@ class Pagecontent {
             nameInput.placeholder = 'Name';
             nameInput.setAttribute('type', 'text');
             nameInput.setAttribute('id', 'myName')
-            nameInput.setAttribute('value', 'Tommy Nguyen');
         };
 
         const createEmailInput = (wrapper) => {
@@ -67,7 +66,6 @@ class Pagecontent {
             emailInput.innerHTML;
             emailInput.placeholder = 'Emailadress';
             emailInput.setAttribute('class', 'email')
-            emailInput.setAttribute('value', 'Tommynguyen@live.se');
 
             const addEmailButton = document.createElement('button');
             emailDiv.append(addEmailButton);
@@ -99,7 +97,6 @@ class Pagecontent {
             phoneInput.innerHTML;
             phoneInput.placeholder = 'Phonenumber';
             phoneInput.setAttribute('class', 'phone')
-            phoneInput.setAttribute('value', '0722176050');
 
             const addPhoneButton = document.createElement('button');
             phoneDiv.append(addPhoneButton);
