@@ -114,7 +114,7 @@ class Pagecontent {
             //SaveBtn
             const saveBtn = document.createElement('button');
             saveDiv.append(saveBtn);
-            saveBtn.innerHTML = 'Save contact';
+            saveBtn.innerHTML = 'CREATE CONTACT';
             saveBtn.setAttribute('id', 'save')
 
         };
